@@ -11,18 +11,20 @@ class Prob:
 
     def add_time(self, _time):
         if not self.timeout or _time < self.max_time:
-            self.isSolve = ''
+            self.isSolve = '?'
         else:
             self.isSolve = 'T'
-        
+
         self.time_m, self.time_s = _time // 60, _time % 60
         self.time = _time
-    
+
     def add_result(self, isSolve):
         if self.time is None:
             raise Exception("時間を入力してください")
         if not isSolve:
             self.isSolve = 'x'
+        else:
+            self.isSolve = ''
 
     def isSolve_int(self):
         return self.isSolve == ''
@@ -35,3 +37,6 @@ class Prob:
         ) + (
             " " + self.isSolve if self.isSolve != "o" else ""
         )
+
+    def for_csv(self):
+        return [self.number, self.time_m, self.time_s, self.isSolve]
