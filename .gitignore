@@ -2,3 +2,4 @@
 pyproject.toml
 .vscode
 __pycache__
+csv
